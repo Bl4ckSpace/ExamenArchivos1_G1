@@ -3,22 +3,27 @@ package examenArchivos1_G1.modelo.beans;
 import java.util.ArrayList;
 
 public class Polinomio {
-    private ArrayList<Integer> terminos;
+    private ArrayList<Termino> terminos;
 
-    public Polinomio(ArrayList<Integer> terminos) {
+    public Polinomio(ArrayList<Termino> terminos) {
         this.terminos = terminos;
     }
 
-    public ArrayList<Integer> getTerminos() {
+    public ArrayList<Termino> getTerminos() {
         return terminos;
     }
 
     @Override
     public String toString() {
-        StringBuilder linea = new StringBuilder();
-        for (Integer termino : this.terminos) {
-            linea.append(termino).append(" ");
+        StringBuilder cadenaPolinomio = new StringBuilder();
+        boolean primero = true;
+        for (Termino termino : this.terminos) {
+            if (termino.getCoeficiente() != 0) {
+                if (!primero && termino.getCoeficiente() > 0) cadenaPolinomio.append("+");
+                cadenaPolinomio.append(termino);
+                primero = false;
+            }
         }
-        return linea.toString();
+        return cadenaPolinomio.toString();
     }
 }

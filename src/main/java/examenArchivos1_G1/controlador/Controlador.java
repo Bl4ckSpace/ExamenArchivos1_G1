@@ -1,22 +1,14 @@
 package examenArchivos1_G1.controlador;
 
-import examenArchivos1_G1.modelo.beans.Polinomio;
-import examenArchivos1_G1.modelo.procesos.GeneracionPolinomio;
 
-import java.util.ArrayList;
+import examenArchivos1_G1.modelo.beans.Polinomio;
+import examenArchivos1_G1.modelo.procesos.GestionPolinomios;
 
 public class Controlador {
     public void ejecutar() {
-        GeneracionPolinomio generacionPolinomio = new GeneracionPolinomio();
+        GestionPolinomios gestionPolinomios = new GestionPolinomios();
+        Polinomio polinomio = gestionPolinomios.polinomio("polinomio.bin", "polinomio.txt");
 
-        ArrayList<Polinomio> polinomios = generacionPolinomio.leerArchivoPolinomioBin();
-        generacionPolinomio.escribirArchivoPolinomioBin(polinomios);
-
-        ArrayList<Polinomio> polinomiosBin = generacionPolinomio.leerArchivoCopiaPolinomioBin();
-        generacionPolinomio.escribirArchivoTextoPlano(polinomiosBin);
-
-        for (Polinomio polinomio : polinomiosBin) {
-            System.out.println(polinomio);
-        }
+        System.out.println(polinomio);
     }
 }
